@@ -23,7 +23,10 @@ var Run = function () {
 
             //     distance(boxObjects[i].x, boxObjects[i].y, boxObjects[j].x, boxObjects[j].y)
             // }
-
+            if(boxObjects[i] == "dead"){
+                continue;
+            }
+    
             if (boxObjects[i].dead == false) {
 
                 boxObjects[i].collusion(boxObjects);

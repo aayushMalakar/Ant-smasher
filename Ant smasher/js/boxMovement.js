@@ -1,5 +1,5 @@
 var boxObjects = [];
-var boxesGenerate = 1000;
+var boxesGenerate = 10;
 var widthOfBoxes = 20;
 var heightOfBoxes = 20;
 var colorOfBoxes = 'blue';
@@ -19,6 +19,7 @@ function BoxProperty(x, y, parentElem) {
     this.yCoordinate = y;
     this.box = null;
     this.dead = false;
+    var that = this;
 
     this.create = function () {
 
@@ -53,7 +54,7 @@ function BoxProperty(x, y, parentElem) {
 
         this.box.onclick = function (event) {
 
-            this.dead = true;
+            that.dead = true;
             event.target.style.background = "url('./img/blood.png') no-repeat";
             event.target.style.backgroundSize = 100 + "%";
             // parentElem.removeChild(this);
@@ -63,8 +64,9 @@ function BoxProperty(x, y, parentElem) {
             setTimeout(function () {
 
                 parentElem.removeChild(event.target);
-                boxObjects.splice(boxObjects[this.arrayIndex], 1)
+                boxObjects.splice(boxObjects[that.arrayIndex], 1)
                 boxObjects.splice(i, 0, 'dead');
+                console.log(boxObjects);
 
             }, 1000)
 
